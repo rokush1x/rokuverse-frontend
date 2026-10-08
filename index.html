@@ -1,0 +1,349 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#13161f">
+<title>ROXUVERSE</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<div class="app" id="app">
+
+  <!-- LANDING -->
+  <section class="screen active" id="landing">
+    <div class="landing-top">
+      <div class="logo-badge">
+        <img src="https://res.cloudinary.com/thievxu1/image/upload/v1791228516/lh0t778gv160dqhbedkz.jpg" alt="ROXUVERSE logo" draggable="false">
+      </div>
+      <h1 class="brand">ROXUVERSE</h1>
+      <div class="tagline">MOBILE APP</div>
+    </div>
+    <div class="landing-bottom">
+      <div class="btn-row">
+        <button class="btn btn-primary" onclick="go('login')"><i class="fa-solid fa-right-to-bracket"></i> LOGIN</button>
+        <button class="btn btn-ghost" onclick="window.location.href='mailto:rokushi.dev@gmail.com'"><i class="fa-solid fa-headset"></i> CONTACT</button>
+      </div>
+      <div class="social-title">CONNECT WITH US</div>
+      <div class="socials">
+        <a class="social tg" onclick="window.location.href='https://t.me/roxuswipe'"><i class="fa-brands fa-telegram"></i></a>
+        <a class="social saweria" onclick="window.location.href='https://saweria.co/rokushi'"><i class="fa-solid fa-mug-hot"></i></a>
+        <a class="social gmail" onclick="window.location.href='mailto:rokushi.me@protonmail.com'"><i class="fa-solid fa-envelope"></i></a>
+      </div>
+      <div class="copy">© 2019 ROXUVERSE • v01.19.01027</div>
+    </div>
+  </section>
+
+  <!-- LOGIN -->
+  <section class="screen" id="login">
+    <div class="top-back"><button class="icon-back" onclick="go('landing')"><i class="fa-solid fa-arrow-left"></i></button></div>
+    <div class="login-wrap">
+      <div class="login-avatar"><i class="fa-solid fa-user-ninja"></i></div>
+      <h2 class="login-title">Welcome Back</h2>
+      <p class="login-sub">SIGN IN TO CONTINUE</p>
+      <form id="loginForm" onsubmit="return doLogin(event)">
+        <label class="field">
+          <i class="fa-regular fa-user"></i>
+          <input id="username" type="text" placeholder="Username" autocomplete="username" required>
+        </label>
+        <label class="field">
+          <i class="fa-solid fa-lock"></i>
+          <input id="password" type="password" placeholder="Password" autocomplete="current-password" required>
+          <button type="button" class="eye-btn" onclick="togglePass(this)"><i class="fa-regular fa-eye"></i></button>
+        </label>
+        <div class="login-msg" id="loginMsg"></div>
+        <button class="login-btn" type="submit">SIGN IN <i class="fa-solid fa-rocket"></i></button>
+        <div class="login-hint">HUBUNGI ADMIN JIKA BELUM PUNYA AKUN</div>
+      </form>
+    </div>
+  </section>
+
+  <!-- LOADING -->
+  <section class="screen" id="loading">
+    <div class="loading-video-bg" aria-hidden="true">
+      <video autoplay muted loop playsinline preload="auto"
+        poster="https://res.cloudinary.com/thievxu1/video/upload/so_0/roiok1ss4arfdk3hexu1.jpg">
+        <source src="https://res.cloudinary.com/thievxu1/video/upload/ac_none/vc_h264/f_mp4/q_auto/roiok1ss4arfdk3hexu1.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="loader-box">
+      <div class="orb"><div class="orb-inner">
+        <img src="https://res.cloudinary.com/thievxu1/image/upload/v1791227220/thmmodf58zm0z5iqxu0d.jpg" alt="logo" draggable="false">
+      </div></div>
+      <h2 class="load-title">LOADING</h2>
+      <p class="load-sub">MEMPERSIAPKAN DASHBOARD</p>
+      <div class="progress"><span id="progressBar"></span></div>
+      <div class="percent" id="percentText">0%</div>
+      <button class="skip-btn" onclick="skipLoading()">SKIP <i class="fa-solid fa-forward"></i></button>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <section class="screen" id="dashboard">
+    <div class="topbar">
+      <div class="avatar-wrap" id="topAvatarWrap">
+        <label class="profile-mini" for="avatarUpload" id="topAvatarMini">
+          <i class="fa-solid fa-user" id="topAvatarIcon"></i>
+          <img id="topAvatarImg" alt="Avatar" hidden>
+          <span class="avatar-cam"><i class="fa-solid fa-camera"></i></span>
+        </label>
+      </div>
+      <input type="file" id="avatarUpload" accept="image/png,image/jpeg,image/jpg,image/gif" hidden>
+
+      <div class="topbar-info">
+        <div class="topbar-name-row">
+          <strong id="topUsername">user</strong>
+          <button class="badge-chip small" id="topBadge" onclick="openBadgeSelector()" aria-label="Pilih Badge">
+            <i class="fa-solid fa-user"></i>
+          </button>
+        </div>
+        <small id="topBadgeSub">member • basic</small>
+      </div>
+      <button class="icon-btn cart" onclick="openShop()" aria-label="Shop">
+        <i class="fa-solid fa-cart-shopping"></i>
+      </button>
+    </div>
+
+    <!-- HOME -->
+    <div class="panel active" id="panel-home">
+      <div class="video-carousel" id="videoCarousel">
+        <div class="slides">
+          <div class="slide active" data-index="0" data-type="video">
+            <video class="slide-video" autoplay muted loop playsinline preload="auto"
+              poster="https://res.cloudinary.com/thievxu1/video/upload/so_0/oge8h5pfni0g9zygyvre.jpg">
+              <source src="https://res.cloudinary.com/thievxu1/video/upload/ac_none/vc_h264/f_mp4/q_auto/oge8h5pfni0g9zygyvre.mp4" type="video/mp4">
+            </video>
+          </div>
+          <div class="slide" data-index="1" data-type="video">
+            <iframe src="https://player.cloudinary.com/embed/?cloud_name=thievxu1&public_id=wzn0erulcosublv2iyow&autoplay=true&muted=true&loop=true&controls=false&playsinline=true"
+              allow="autoplay; fullscreen" allowfullscreen loading="eager" title="Slide 2 Video"></iframe>
+          </div>
+        </div>
+        <div class="slide-label"><i class="fa-solid fa-circle"></i> FEATURED</div>
+        <div class="dots" id="carouselDots">
+          <button class="dot active" data-index="0"></button>
+          <button class="dot" data-index="1"></button>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head"><h3>PAYMENT</h3><span>BALANCE</span></div>
+        <div class="balance-card">
+          <div class="balance-info">
+            <small>YOUR BALANCE</small>
+            <strong id="balanceAmount">Rp 0</strong>
+          </div>
+          <button class="deposit-btn" onclick="openDeposit()"><i class="fa-solid fa-plus"></i> DEPOSIT</button>
+        </div>
+        <div class="payment-actions">
+          <button class="pay-action dep" onclick="openDeposit()">
+            <i class="fa-solid fa-wallet"></i><b>Deposit Balance</b><span>Top up saldo</span>
+          </button>
+          <button class="pay-action hist" onclick="openShop()">
+            <i class="fa-solid fa-store"></i><b>Shop</b><span>Beli produk digital</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-head"><h3>LEVEL &amp; XP</h3><span>MAX 999</span></div>
+        <div class="level-row">
+          <div class="level-badge" id="levelBadge">1</div>
+          <div class="level-info">
+            <div class="level-top">
+              <strong id="levelLabel">Level 1</strong>
+              <span id="xpLabel">0 / 100 XP</span>
+            </div>
+            <div class="xp-bar"><span id="xpBar" style="width:0%"></span></div>
+            <div class="xp-float" id="xpFloat"></div>
+            <div class="level-hint">
+              <i class="fa-solid fa-circle-info"></i>
+              <span id="xpTotalLabel">Total 0 XP • Max 100.000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><i class="fa-solid fa-bolt" style="color:var(--red)"></i><strong id="statActive">0</strong><small>ACTIVE</small></div>
+        <div class="stat"><i class="fa-solid fa-check" style="color:var(--green)"></i><strong id="statSuccess">0</strong><small>SUCCESS</small></div>
+        <div class="stat"><i class="fa-solid fa-clock" style="color:var(--yellow)"></i><strong id="statPending">0</strong><small>PENDING</small></div>
+      </div>
+
+      <div class="section">
+        <div class="section-head"><h3>RECENT ACTIVITY</h3><span>TODAY</span></div>
+        <div id="activityList">
+          <div class="activity-item">
+            <div class="activity-icon" style="color:var(--green)"><i class="fa-solid fa-check"></i></div>
+            <div class="activity-info"><strong>Login berhasil</strong><small>Autentikasi user</small></div>
+            <div class="activity-time">BARU</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ROOM CHAT -->
+    <div class="panel" id="panel-chat">
+      <div class="room-header">
+        <div class="room-hash">#</div>
+        <div class="room-info">
+          <strong>General Room</strong>
+          <small><span class="online-dot"></span> <span id="onlineCount">0 online</span></small>
+        </div>
+        <button class="room-menu-btn" onclick="toast('Room menu coming soon')">
+          <i class="fa-solid fa-ellipsis-vertical"></i>
+        </button>
+      </div>
+
+      <div class="room-messages" id="roomMessages"></div>
+
+      <div class="picker-sheet" id="pickerSheet">
+        <div class="picker-tabs">
+          <button class="picker-tab active" data-tab="emoji" onclick="switchPickerTab('emoji')">😀 EMOJI</button>
+          <button class="picker-tab" data-tab="sticker" onclick="switchPickerTab('sticker')">🎨 STICKER</button>
+          <button class="picker-tab" data-tab="gif" onclick="switchPickerTab('gif')">🎞️ GIF</button>
+        </div>
+        <div class="picker-body" id="pickerBody"></div>
+      </div>
+
+      <div class="room-input-bar">
+        <button class="input-icon-btn" onclick="togglePicker('emoji')" aria-label="Emoji / Sticker / GIF">
+          <i class="fa-regular fa-face-smile"></i>
+        </button>
+        <button class="input-icon-btn" onclick="document.getElementById('chatFileInput').click()" aria-label="Attach file">
+          <i class="fa-solid fa-paperclip"></i>
+        </button>
+        <input type="text" id="chatInput" placeholder="Ketik pesan / link..." autocomplete="off" maxlength="500">
+        <button class="send-btn" onclick="sendChatText()" aria-label="Kirim">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </div>
+
+      <input type="file" id="chatFileInput"
+        accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.txt,.zip,.rar,.7z,.apk,.mp3,.mp4,.json,.csv"
+        hidden>
+    </div>
+
+    <!-- TOOLS -->
+    <div class="panel" id="panel-tools">
+      <div class="section-head">
+        <h3>TOOLS</h3>
+        <span class="token-counter" id="tokenCounter">
+          <i class="fa-solid fa-coins"></i> <span id="tokenText">0 / 0</span>
+        </span>
+      </div>
+      <div class="tools-grid" id="toolsGrid"></div>
+    </div>
+
+    <!-- NOTIF -->
+    <div class="panel" id="panel-notif">
+      <div class="section-head"><h3>NOTIFIKASI</h3><span id="notifCount">0 BARU</span></div>
+      <div class="notif-list" id="notifList"></div>
+    </div>
+  </section>
+
+  <!-- BOTTOM NAV -->
+  <nav class="bottom-nav" id="bottomNav">
+    <button class="nav-btn active" data-tab="home" onclick="switchTab('home')"><i class="fa-solid fa-house"></i><span>HOME</span></button>
+    <button class="nav-btn" data-tab="chat" onclick="switchTab('chat')"><i class="fa-solid fa-comments"></i><span>CHAT</span></button>
+    <button class="nav-btn" data-tab="tools" onclick="switchTab('tools')"><i class="fa-solid fa-toolbox"></i><span>TOOLS</span></button>
+    <button class="nav-btn" data-tab="notif" onclick="switchTab('notif')"><i class="fa-solid fa-bell"></i><span>NOTIF</span><span class="badge" id="navNotifBadge" style="display:none">0</span></button>
+  </nav>
+
+  <!-- DEPOSIT MODAL -->
+  <div class="modal-overlay" id="depositModal" onclick="if(event.target===this)closeDeposit()">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3 id="depositTitle">DEPOSIT BALANCE</h3>
+        <button class="modal-close" onclick="closeDeposit()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div id="depositStep1">
+        <label class="modal-label">DEPOSIT AMOUNT</label>
+        <div class="amount-grid">
+          <button class="amount-chip" data-amount="10000">Rp 10.000</button>
+          <button class="amount-chip" data-amount="20000">Rp 20.000</button>
+          <button class="amount-chip" data-amount="50000">Rp 50.000</button>
+          <button class="amount-chip" data-amount="100000">Rp 100.000</button>
+          <button class="amount-chip" data-amount="500000">Rp 500.000</button>
+          <button class="amount-chip" data-amount="1000000">
+            Rp 1.000.000
+            <span class="chip-badge hot">MAX</span>
+          </button>
+        </div>
+        <label class="modal-label" style="margin-top:18px">PAYMENT METHOD</label>
+        <div class="pay-methods" id="payMethodsGrid"></div>
+        <button class="login-btn" style="margin-top:22px" onclick="submitDepositRequest()">
+          LANJUTKAN <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <div id="depositStep2" style="display:none">
+        <div class="modal-info-chip">
+          <div>
+            <small>JUMLAH DEPOSIT</small>
+            <strong id="depositAmountLabel">Rp 0</strong>
+          </div>
+          <span class="badge-status gratis" id="depositStatusLabel">PENDING</span>
+        </div>
+        <p style="color:#9ba1ac;font-size:11px;letter-spacing:.08em;text-align:center;margin:0 0 14px">
+          <i class="fa-solid fa-circle-info" style="color:var(--cyan)"></i>
+          Transfer sesuai nominal, tunggu konfirmasi admin
+        </p>
+        <div id="paymentDetailBox" style="background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:16px;padding:18px;text-align:center;margin-bottom:16px"></div>
+        <button class="login-btn" onclick="closeDeposit()" style="background:rgba(255,255,255,.08);color:#fff">
+          SAYA SUDAH BAYAR <i class="fa-solid fa-check"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHOP MODAL -->
+  <div class="modal-overlay" id="shopModal" onclick="if(event.target===this)closeShop()">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>SHOP</h3>
+        <button class="modal-close" onclick="closeShop()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="shop-balance">
+        <div><small>YOUR BALANCE</small><strong id="shopBalance">Rp 0</strong></div>
+        <button onclick="closeShop();openDeposit()"><i class="fa-solid fa-plus"></i> TOP UP</button>
+      </div>
+      <label class="modal-label">PRODUK</label>
+      <div class="product-grid" id="productGrid"></div>
+    </div>
+  </div>
+
+  <!-- BADGE SELECTOR MODAL -->
+  <div class="modal-overlay" id="badgeModal" onclick="if(event.target===this)closeBadgeSelector()">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3>MY BADGES</h3>
+        <button class="modal-close" onclick="closeBadgeSelector()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-info-chip">
+        <div>
+          <small>YOUR BALANCE</small>
+          <strong id="badgeModalBalance">Rp 0</strong>
+        </div>
+        <button class="deposit-btn" style="padding:8px 12px" onclick="closeBadgeSelector();openDeposit()">
+          <i class="fa-solid fa-plus"></i> TOP UP
+        </button>
+      </div>
+      <p style="color:#7a8090;font-size:10px;letter-spacing:.08em;text-align:center;margin:0 0 14px">
+        <i class="fa-solid fa-hand-pointer" style="color:var(--cyan)"></i> Tap badge untuk beli / pakai
+      </p>
+      <div class="badge-selector-grid" id="badgeSelectorGrid"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
