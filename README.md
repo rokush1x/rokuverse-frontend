@@ -1,4 +1,5 @@
-# ⚡ROXUVERSE|Mobile App
+#  ROXUVERSE⚡
+# Mobile App 
 
 Client app untuk ROXUVERSE. HTML/CSS/JS terpisah.
 
@@ -17,6 +18,7 @@ https://rokush1x.github.io/roxuverse-frontend/
 ## 🔗 Backend API
 
 https://roxuverse-backend-production
+
 ## 👥 Roles
 
 member : suki
