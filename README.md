@@ -1,4 +1,4 @@
-# ⚡ROXUVERSE|Frontend Mobile App
+# ⚡ROXUVERSE|Mobile App
 
 Client app untuk ROXUVERSE. HTML/CSS/JS terpisah.
 
